@@ -1,2 +1,2 @@
-# smd-linux-template
-Template for Repositories
+# smdlinux Conkys for Plasma
+Credit: https://github.com/arcolinux/
