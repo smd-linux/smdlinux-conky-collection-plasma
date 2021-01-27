@@ -9,6 +9,8 @@
 # Website	:	https://www.arcolinuxb.com
 # Website	:	https://www.arcolinuxiso.com
 # Website	:	https://www.arcolinuxforum.com
+# Modified by Seth Dawson for SMD-Linux
+# January 2021
 ##################################################################################################################
 
 #Variables
@@ -58,7 +60,7 @@ function checkCSF() {
 		echo "conky-sessionfile exists"
 	else
 	    echo "conky-sessionfile does not exist"
-	    echo "conky -c /home/$USER/.config/conky/AUR-ArcoLinux.conkyrc & sleep 1s" > $WDIR/conky-sessionfile
+	    echo "conky -c /home/$USER/.config/conky/AUR-smdlinux.conkyrc & sleep 1s" > $WDIR/conky-sessionfile
 	fi
 }
 
