@@ -5,9 +5,7 @@
 # Authors:       modified for mx linux version 17 by dolphin oracle
 # Latest change: Sun December 10, 2017.
 # https://github.com/MX-Linux/conky-toggle-mx
-# Adapted to work on ArcoLinux
-# Author: Erik Dubois
-# June 2019
+# Modified for SMD-Linux
 ################################################################################
 
 main()
