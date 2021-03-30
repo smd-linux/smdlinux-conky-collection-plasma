@@ -28,7 +28,7 @@ default_outline_color 000000
 minimum_size 800 800
 maximum_width 800
 gap_x 0
-gap_y 250
+gap_y 100
 alignment top_left
 no_buffers yes
 uppercase no
@@ -59,5 +59,5 @@ color8 FFA726
 color9 F1544B
 
 TEXT
-${offset 55}${voffset 55}${color2}${font Helvetica Neue LT Com:size=55}${lua Hour}${color1}${lua Minute}
+${offset 55}${color2}${font Helvetica Neue LT Com:size=55}${lua Hour}${color1}${lua Minute}
 
