@@ -1,0 +1,102 @@
+conky.config = {
+-- from where does conky start
+alignment = "middle_left",
+
+-- distance from screen edge
+gap_x = 20,
+gap_y = 0,
+
+-- size settings for conky window
+maximum_width = 500,
+minimum_width = 500,
+max_text_width = 0,
+
+-- set conky behavior on screen (adjustable in the color section)
+	-- allows setting own WM_Class. conky is the default
+own_window_class = "Conky",
+	-- don"t share the desktop, makes conky its own animal
+own_window = true,
+	-- on some systems does give full transparency, but cannot be adjusted as this setup allows
+own_window_transparent = false,
+	-- necessary to get adjustable transparency
+own_window_argb_visual = true,
+       -- normal, desktop, dock, panel, override
+own_window_type = "normal",
+	--set values for conky behavior
+own_window_hints = "undecorated,sticky,skip_pager,skip_taskbar",
+
+-- set border/shading behavior
+default_outline_color = "000000",
+default_shade_color = "000000",
+draw_borders = false,
+border_width =  0,
+stippled_borders = 0,
+draw_graph_borders = false,
+draw_outline = false,
+draw_shades = false,
+border_inner_margin = 10,
+
+-- set special conditions for conky
+out_to_x = true,
+background = true,
+out_to_console = false,
+out_to_stderr = false,
+text_buffer_size = 512,
+total_run_times = 0,
+double_buffer = true,
+update_interval = 2,
+cpu_avg_samples = 2,
+net_avg_samples = 2,
+no_buffers = true,
+short_units = true,
+imlib_cache_size = 256,
+show_graph_scale = false,
+show_graph_range = false,
+
+-- Text options
+
+	-- anti-aliased font use and value = .1 to 1.0
+use_xft = true,
+xftalpha = 0.8,
+	-- Xft font to use
+font = "Helvetica Neue LT Com:size=10.0",
+	-- UTF8 support required for XFT
+override_utf8_locale = true,
+
+-- START COLORS
+default_color = "5C5442",
+color0 = "F4BE1D",
+color1 = "C62E1C",
+color2 = "EDD077",
+color3 = "BDBDBD",
+color4 = "CCCCCC",
+color5 = "FFFFFF",
+color6 = "1F7411",
+color7 = "FFA726",
+color8 = "F1544B",
+color9 = "5C5442",
+-- END COLORS
+own_window_colour = "000000",
+own_window_argb_value = 0,
+
+lua_load = "~/.conky/smd_linux/scripts/draw_bg.lua",
+lua_draw_hook_pre = "draw_bg"
+}
+
+
+
+conky.text = [[
+
+${voffset 8}
+${font Helvetica Neue LT Com:bold:size=11.0}${voffset -22}${color1}ARCH-LINUX${color9}${hr}
+${color0}${font}${execpi 600 python3 ~/.conky/smd_linux/news/arch-news.py &}
+$font ${voffset -26 }
+
+${font Helvetica Neue LT Com:bold:size=11.0}${color1}HACKER-NEWS${color9}${hr}
+${color3}${font}${execpi 600 python ~/.conky/smd_linux/news/hackernews.py &}
+$font ${voffset -26 }
+
+${font Helvetica Neue LT Com:bold:size=11.0}${color1}LINUX-TODAY${color9}${hr}
+${color0}${font}${execpi 600 python ~/.conky/smd_linux/news/linuxtoday.py; sleep 15s}
+${voffset 4}
+${font}${voffset -10 }]];
