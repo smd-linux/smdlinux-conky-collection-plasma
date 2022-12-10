@@ -3,7 +3,7 @@ conky.config = {
 alignment = "top_right",
 
 -- distance from screen edge
-gap_x = 1950,
+gap_x = 3300,
 gap_y = 18,
 
 -- size settings for conky window
@@ -66,8 +66,11 @@ override_utf8_locale = true,
 -- START COLORS
 default_color = '5C5442',
 color0 = 'FFFFFF',
-color1 = '1680b2',
-color2 = '373741',
+-- color1 = '1680b2',
+color1 = 'C62E1C',
+color2 = 'F4BE1D',
+color3 = 'FF0000',
+color4 = '008000',
 -- END COLORS
 own_window_colour = "000000",
 own_window_argb_value = 0,
@@ -78,25 +81,25 @@ lua_draw_hook_pre = "draw_bg",
 
 conky.text = [[
 ${voffset -17 }${font DejaVuSans:bold:size=10.0}${color1}${voffset 4}
-SYSTEM ${goto 254}${color1}DISK USAGE ${font DejaVuSans:bold:size=9.0}${color0}
-Name ${font}${goto 75}${sysname} ${kernel} ${goto 254}${font DejaVuSans:bold:size=9.0} / ${font}${color0}${goto 324}${fs_used /} / ${fs_size /}${alignr}${fs_used_perc /}%${font DejaVuSans:bold:size=9.0}
+SYSTEM ${goto 254}${color1}DISK USAGE ${font DejaVuSans:bold:size=9.0}${color2}
+Name ${font}${goto 75}${sysname} ${kernel} ${goto 254}${font DejaVuSans:bold:size=9.0} / ${font}${goto 324}${fs_used /} / ${fs_size /}${alignr}${fs_used_perc /}%${font DejaVuSans:bold:size=9.0}
 RAM ${font}${goto 75}${mem} / ${memmax}${goto 254}${font DejaVuSans:bold:size=9.0} /home ${font}${goto 324}${fs_used /home/} / ${fs_size /home/}${alignr}${fs_used_perc /home/}%${font DejaVuSans:bold:size=9.0}
 SWAP ${font}${goto 75}${swap} / ${swapmax}${font DejaVuSans:bold:size=9.0}
 Uptime ${font}${goto 75}${uptime}${font DejaVuSans:bold:size=10.0}${color1}
 ${goto 254}NETWORK
-CPU USAGE${goto 254}${font DejaVuSans:bold:size=9.0}${color0}Internal IP - eno1${font}${alignr}${addr eno1}${font DejaVuSans:bold:size=9.0}
-CPU 01 - ${font}${cpu cpu1}%${goto 110}${cpubar cpu1 5,100}${goto 260}${font DejaVuSans:bold:size=9.0} Download${font DejaVuSans:bold:size=9.0}
-CPU 02 - ${font}${cpu cpu2}%${goto 110}${cpubar cpu2 5,100}${color0}${font DejaVuSans:bold:size=9.0}
-CPU 03 - ${font}${cpu cpu3}%${goto 110}${cpubar cpu3 5,100}${goto 275}Total - ${totaldown eno1}${color1}${goto 275}${voffset -16}Speed - ${downspeed eno1}${color0}${alignr}${downspeedgraph eno1 20,100 scale -t -l}${color0}${font DejaVuSans:bold:size=9.0}
-${voffset -4}CPU 04 - ${font}${cpu cpu4}%${goto 110}${cpubar cpu4 5,100}
+CPU USAGE${goto 254}${font DejaVuSans:bold:size=9.0}${color2}Internal IP - eno1${font}${alignr}${addr eno1}${font DejaVuSans:bold:size=9.0}
+Core0 - ${font}${cpu cpu1}%${goto 110}${cpubar cpu1 5,100}${goto 260}${font DejaVuSans:bold:size=9.0} Download${font DejaVuSans:bold:size=9.0}
+Core1 - ${font}${cpu cpu2}%${goto 110}${cpubar cpu2 5,100}${font DejaVuSans:bold:size=9.0}
+Core2 - ${font}${cpu cpu3}%${goto 110}${cpubar cpu3 5,100}${goto 275}Total - ${totaldown eno1}${goto 275}${voffset -16}Speed - ${downspeed eno1}${alignr}${downspeedgraph eno1 20,100 scale -t -l}${font DejaVuSans:bold:size=9.0}
+${voffset -4}Core3 - ${font}${cpu cpu4}%${goto 110}${cpubar cpu4 5,100}
 ${goto 260}${voffset -16}${font DejaVuSans:bold:size=9.0} Upload${font DejaVuSans:bold:size=9.0}${color1}
-${voffset 20}TEMPERATURE${goto 275}${font}${color0}Total - ${totalup eno1}${color1}${goto 275}${voffset -16}Speed - ${upspeed eno1}${color0}${alignr}${upspeedgraph eno1 20,100 scale -t -l}${color0}${font DejaVuSans:bold:size=9.0}
-CPU 01: ${exec sensors | grep 'Core 0:' | awk '{print $3}'}${font DejaVuSans:bold:size=9.0}
-CPU 02: ${exec sensors | grep 'Core 1:' | awk '{print $3}'}${goto 254}${font DejaVuSans:bold:size=10.0}${color1}PROCESSES${font DejaVuSans:bold:size=9.0}${color0}
-CPU 03: ${exec sensors | grep 'Core 2:' | awk '{print $3}'}${goto 260}${color0}Name${goto 360}PID${goto 430}CPU${alignr}MEM
-CPU 04: ${exec sensors | grep 'Core 3:' | awk '{print $3}'}${font}${goto 260}${top name 1}${goto 360}${top pid 1}${goto 410}${top cpu 1}%${alignr}${top mem 1}%
+${voffset 20}TEMPERATURE${goto 275}${font}${color2}Total - ${totalup eno1}${goto 275}${voffset -16}Speed - ${upspeed eno1}${alignr}${upspeedgraph eno1 20,100 scale -t -l}${font DejaVuSans:bold:size=9.0}
+${if_match ${execpi 6 /usr/bin/sensors | grep 0: | paste -s | cut -c17-18}>=60}${color3}${else}${if_match ${execpi 6 /usr/bin/sensors | grep 0: | paste -s | cut -c17-18}>=50}${color2}${else}${color4}${endif}${endif}Core0 Temp: ${execpi 6 /usr/bin/sensors | grep 0: | paste -s | cut -c17-18}°C${color2}${font DejaVuSans:bold:size=9.0}
+${if_match ${execpi 6 /usr/bin/sensors | grep 1: | paste -s | cut -c17-18}>=60}${color3}${else}${if_match ${execpi 6 /usr/bin/sensors | grep 1: | paste -s | cut -c17-18}>=50}${color2}${else}${color4}${endif}${endif}Core1 Temp: ${execpi 6 /usr/bin/sensors | grep 1: | paste -s | cut -c17-18}°C${color2}${goto 254}${font DejaVuSans:bold:size=10.0}${color1}PROCESSES${font DejaVuSans:bold:size=9.0}${color2}
+${if_match ${execpi 6 /usr/bin/sensors | grep 2: | paste -s | cut -c17-18}>=60}${color3}${else}${if_match ${execpi 6 /usr/bin/sensors | grep 2: | paste -s | cut -c17-18}>=50}${color2}${else}${color4}${endif}${endif}Core2 Temp: ${execpi 6 /usr/bin/sensors | grep 2: | paste -s | cut -c17-18}°C${color2}${goto 260}Name${goto 360}PID${goto 430}CPU${alignr}MEM
+${if_match ${execpi 6 /usr/bin/sensors | grep 3: | paste -s | cut -c17-18}>=60}${color3}${else}${if_match ${execpi 6 /usr/bin/sensors | grep 3: | paste -s | cut -c17-18}>=50}${color2}${else}${color4}${endif}${endif}Core3 Temp: ${execpi 6 /usr/bin/sensors | grep 3: | paste -s | cut -c17-18}°C${color2}${font}${goto 260}${top name 1}${goto 360}${top pid 1}${goto 410}${top cpu 1}%${alignr}${top mem 1}%
 ${goto 260}${top name 2}${goto 360}${top pid 2}${goto 410}${top cpu 2}%${alignr}${top mem 2}%${font DejaVuSans:bold:size=10.0}${color1}
-DISK FREE SPACE${font}${color0}${goto 260}${top name 3}${goto 360}${top pid 3}${goto 410}${top cpu 3}%${alignr}${top mem 3}%${font DejaVuSans:bold:size=9.0}
+DISK FREE SPACE${font}${color2}${goto 260}${top name 3}${goto 360}${top pid 3}${goto 410}${top cpu 3}%${alignr}${top mem 3}%${font DejaVuSans:bold:size=9.0}
 /${font}${goto 60}- ${fs_used_perc /}%${goto 110}${fs_bar 5,100 /}${goto 260}${top name 4}${goto 360}${top pid 4}${goto 410}${top cpu 4}%${alignr}${top mem 4}%${font DejaVuSans:bold:size=9.0}
 /home${font}${goto 60}- ${fs_used_perc /home/}%${goto 110}${fs_bar 5,100 /home/}${goto 260}${top name 5}${goto 360}${top pid 5}${goto 410}${top cpu 5}%${alignr}${top mem 5}%
 
